@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.example.e3.with.di.DIFactoryForE3Elements:com.example.e3.with.di.usage.PojoHandler"
+            commandId="com.example.e3.with.di.usage.command">
+      </handler>
+      <handler
+            class="com.example.e3.with.di.DIFactoryForE3Elements:com.example.e3.with.di.usage.PojoOpenEditor"
+            commandId="com.example.e3.with.di.usage.command.openeditor">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?endof=com.example.test.application.menu.file">
+         <menu
+               label="E4 compat">
+            <command
+                  commandId="com.example.e3.with.di.usage.command"
+                  label="Execute Handler with DI"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.views.showView"
+                  label="Open View with DI"
+                  style="push">
+               <parameter
+                     name="org.eclipse.ui.views.showView.viewId"
+                     value="com.example.e3.with.di.usage.pojoview">
+               </parameter>
+            </command>
+            <command
+                  commandId="com.example.e3.with.di.usage.command.openeditor"
+                  label="Open Editor with DI"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="com.example.e3.with.di.usage.command"
+            name="DI enabled command">
+      </command>
+      <command
+            id="com.example.e3.with.di.usage.command.openeditor"
+            name="Open Editor">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="true"
+            class="com.example.e3.with.di.DIFactoryForE3Elements:bundleclass://com.example.e3.with.di.usage/com.example.e3.with.di.usage.PojoView"
+            id="com.example.e3.with.di.usage.pojoview"
+            name="DI enabled View"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.example.e3.with.di.DIFactoryForE3Elements:com.example.e3.with.di.usage.PojoEditor"
+            default="false"
+            id="com.example.e3.with.di.usage.pojoeditor"
+            name="DI enabled Editor">
+      </editor>
+   </extension>
+   
+   <!--extension
+         point="org.eclipse.ui.views">
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            default="false"
+            id="com.example.e3.with.di.usage.editor1"
+            name="name">
+      </editor>
+   </extension-->
+
+</plugin>
